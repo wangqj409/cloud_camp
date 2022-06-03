@@ -1,29 +1,27 @@
 package part_2
 
 import (
-    "fmt"
-    "io"
     "net/http"
 )
 
 var (
-    serv *http.ServeMux
+    port = ":9002" // listen port
 )
 
-func showHeaders(w http.ResponseWriter, r *http.Request) {
-    for k := range r.Header {
-        io.WriteString(w, fmt.Sprintf("%s %v\n", k, r.Header.Get(k)))
-    }
-}
-func healthz(w http.ResponseWriter, r *http.Request) {
-    io.WriteString(w, "200")
-}
+/**
+- 接收客户端 request，并将 request 中带的 header 写入 response header
+- 读取当前系统的环境变量中的 VERSION 配置，并写入 response header
+- Server 端记录访问日志包括客户端 IP，HTTP 返回码，输出到 server 端的标准输出
+- 当访问 localhost/healthz 时，应返回 200
+*/
+
 
 func NewServer() {
-    serv = http.NewServeMux()
+    serv := http.NewServeMux()
 
-    serv.HandleFunc("/headers", showHeaders)
+    serv.HandleFunc("/responseHeaders", responseHeaders)
+    serv.HandleFunc("/version", version)
     serv.HandleFunc("/healthz", healthz)
 
-    http.ListenAndServe(":9002", serv)
+    http.ListenAndServe(port, serv)
 }

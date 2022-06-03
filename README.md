@@ -1,2 +1,5 @@
 # cloud_camp
-self practice
+
+## Part_02
+
+`make part2` to execute homework
