@@ -9,7 +9,7 @@ import (
 )
 
 var (
-    port = ":9002" // listen port
+    port = ":80" // listen port
 )
 
 /**
@@ -34,6 +34,7 @@ func responseHeaders(w http.ResponseWriter, r *http.Request) {
 
 func healthz(w http.ResponseWriter, r *http.Request) {
     io.WriteString(w, "200")
+    // w.WriteHeader(http.StatusOK)
 }
 
 func version(w http.ResponseWriter, r *http.Request) {
