@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: httpserver
-        image: crazon/httpserver:1.1
+        image: crazon/httpserver:v1.5
         ports:
-        - containerPort: 9002
+        - containerPort: 80
