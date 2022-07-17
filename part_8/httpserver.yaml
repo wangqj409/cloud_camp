@@ -19,3 +19,10 @@ spec:
         image: crazon/httpserver:v1.5
         ports:
         - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 3
