@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: crazonhttp-svc
+  namespace: crazon
+spec:
+  type: ExternalName
+  externalName: crazonhttp.com

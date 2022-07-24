@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: crazonhttpserver-80
+  namespaces: crazon
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: crazonhttp.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: crazonhttp-svc
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
