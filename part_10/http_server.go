@@ -2,15 +2,15 @@ package main
 
 import (
     "fmt"
-    "github.com/prometheus/client_golang/prometheus"
-    "log"
-
-    "github.com/prometheus/client_golang/prometheus/promhttp"
     "io"
+    "log"
     "math/rand"
     "net/http"
     "os"
     "time"
+
+    "github.com/prometheus/client_golang/prometheus"
+    "github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 const (
